@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.official.movieguide.persistence.entity.Movie;
 import com.official.movieguide.service.SearchService;
 
 @Service
@@ -16,13 +17,15 @@ public class SearchServiceImpl implements SearchService
 {
     private List<String> fileNames = new ArrayList<String>();
 
+    private List<Movie> movies = new ArrayList<Movie>();
+
     private static final Set<String> VideoFormats = new HashSet<String>(Arrays.asList("MP4", "MKV", "AVI", "FLV", "MOV", "WMV", "MPEG"));
 
-    public List<String> getFilenames(String directoryPath)
+    public List<Movie> getFilenames(String directoryPath)
     {
         File originalDirectory = new File(directoryPath);
         obtainFileNames(originalDirectory);
-        return fileNames;
+        return movies;
     }
 
     private List<String> obtainFileNames(File originalDirectory)
@@ -38,11 +41,20 @@ public class SearchServiceImpl implements SearchService
             {
                 if (isAMovie(file))
                 {
+                    addToList(file);
                     fileNames.add(file.getName());
                 }
             }
         }
         return fileNames;
+    }
+
+    private void addToList(File file)
+    {
+        Movie movie = new Movie();
+        movie.setName(file.getName());
+        movie.setPath(file.getPath());
+        movies.add(movie);
     }
 
     private boolean fileIsDirectory(File file)

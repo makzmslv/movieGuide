@@ -15,22 +15,19 @@ import com.official.movieguide.service.SearchService;
 @Service
 public class SearchServiceImpl implements SearchService
 {
-    private List<String> fileNames = new ArrayList<String>();
-
-    private List<Movie> movies = new ArrayList<Movie>();
-
     private static final Set<String> VideoFormats = new HashSet<String>(Arrays.asList("MP4", "MKV", "AVI", "FLV", "MOV", "WMV", "MPEG"));
 
     public List<Movie> getFilenames(String directoryPath)
     {
         File originalDirectory = new File(directoryPath);
-        obtainFileNames(originalDirectory);
+        List<Movie> movies = obtainFileNames(originalDirectory);
         return movies;
     }
 
-    private List<String> obtainFileNames(File originalDirectory)
+    private List<Movie> obtainFileNames(File directory)
     {
-        List<File> filesAndFolders = Arrays.asList(originalDirectory.listFiles());
+        List<Movie> movies = new ArrayList<Movie>();
+        List<File> filesAndFolders = Arrays.asList(directory.listFiles());
         for (File file : filesAndFolders)
         {
             if (fileIsDirectory(file))
@@ -41,15 +38,14 @@ public class SearchServiceImpl implements SearchService
             {
                 if (isAMovie(file))
                 {
-                    addToList(file);
-                    fileNames.add(file.getName());
+                    addToList(file, movies);
                 }
             }
         }
-        return fileNames;
+        return movies;
     }
 
-    private void addToList(File file)
+    private void addToList(File file, List<Movie> movies)
     {
         Movie movie = new Movie();
         movie.setName(file.getName());

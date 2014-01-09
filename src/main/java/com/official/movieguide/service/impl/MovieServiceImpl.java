@@ -27,4 +27,10 @@ public class MovieServiceImpl implements MovieService
         return movieDAO.findAll();
     }
 
+    @Override
+    public List<Movie> addMovies(List<Movie> movies)
+    {
+        return movieDAO.save(movies);
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.official.movieguide.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,12 @@ public class MovieServiceImpl implements MovieService
     public Movie getMovieByName(String movieName)
     {
         return movieDAO.findByName(movieName);
+    }
+
+    @Override
+    public List<Movie> getMovies()
+    {
+        return movieDAO.findAll();
     }
 
 }

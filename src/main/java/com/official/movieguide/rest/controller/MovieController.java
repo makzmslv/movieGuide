@@ -1,5 +1,7 @@
 package com.official.movieguide.rest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,4 +25,12 @@ public class MovieController
     {
         return movieService.getMovieByName(movieName);
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public List<Movie> getMovies()
+    {
+        return movieService.getMovies();
+    }
+
 }

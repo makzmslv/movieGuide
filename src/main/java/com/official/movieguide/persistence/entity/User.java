@@ -22,6 +22,19 @@ public class User
     @Column(name = "email_Id")
     private String email_Id;
 
+    @Column(name = "role")
+    private Integer role;
+
+    public Integer getRole()
+    {
+        return role;
+    }
+
+    public void setRole(Integer role)
+    {
+        this.role = role;
+    }
+
     public Integer getId()
     {
         return id;
@@ -65,7 +78,7 @@ public class User
     @Override
     public String toString()
     {
-        return "User [id=" + id + ", username=" + username + ", password=" + password + ", email_Id=" + email_Id + "]";
+        return "User [id=" + id + ", username=" + username + ", password=" + password + ", email_Id=" + email_Id + ", role=" + role + "]";
     }
 
     @Override

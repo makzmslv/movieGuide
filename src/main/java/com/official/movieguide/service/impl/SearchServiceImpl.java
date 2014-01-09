@@ -7,8 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.official.movieguide.service.SearchService;
 
+@Service
 public class SearchServiceImpl implements SearchService
 {
     private List<String> fileNames = new ArrayList<String>();

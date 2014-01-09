@@ -17,7 +17,7 @@ public class SearchServiceImpl implements SearchService
 {
     private static final Set<String> VideoFormats = new HashSet<String>(Arrays.asList("MP4", "MKV", "AVI", "FLV", "MOV", "WMV", "MPEG"));
 
-    public List<Movie> getFilenames(String directoryPath)
+    public List<Movie> search(String directoryPath)
     {
         File originalDirectory = new File(directoryPath);
         List<Movie> movies = obtainFileNames(originalDirectory);

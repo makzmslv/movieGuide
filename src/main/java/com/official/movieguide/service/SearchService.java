@@ -6,5 +6,5 @@ import com.official.movieguide.persistence.entity.Movie;
 
 public interface SearchService
 {
-    public List<Movie> getFilenames(String directoryPath);
+    public List<Movie> search(String directoryPath);
 }

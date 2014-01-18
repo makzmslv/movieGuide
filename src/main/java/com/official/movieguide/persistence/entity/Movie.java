@@ -23,6 +23,9 @@ public class Movie
     @Column(name = "path")
     private String path;
 
+    @Column(name = "nameInSystem")
+    private String nameInSystem;
+
     @OneToOne
     @JoinColumn(name = "ref_additionalInfo")
     private AdditionalInfo additional_Info;
@@ -65,6 +68,16 @@ public class Movie
     public void setAdditional_Info(AdditionalInfo additional_Info)
     {
         this.additional_Info = additional_Info;
+    }
+
+    public String getNameInSystem()
+    {
+        return nameInSystem;
+    }
+
+    public void setNameInSystem(String nameInSystem)
+    {
+        this.nameInSystem = nameInSystem;
     }
 
     @Override

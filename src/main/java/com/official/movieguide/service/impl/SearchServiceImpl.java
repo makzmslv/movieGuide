@@ -50,6 +50,7 @@ public class SearchServiceImpl implements SearchService
         Movie movie = new Movie();
         movie.setName(file.getName());
         movie.setPath(file.getPath());
+        movie.setNameInSystem(file.getName());
         movies.add(movie);
     }
 

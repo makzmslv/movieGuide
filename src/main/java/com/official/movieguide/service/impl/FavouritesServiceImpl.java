@@ -44,14 +44,14 @@ public class FavouritesServiceImpl implements FavouritesService
     }
 
     @Override
-    public List<Favourites> getFavoruitesByUser(Integer userID)
+    public List<Favourites> getFavouritesByUser(Integer userID)
     {
         User user = userDAO.findOne(userID);
         return favouritesDAO.findByUser(user);
     }
 
     @Override
-    public List<Favourites> getFavoruitesByMovie(Integer movieID)
+    public List<Favourites> getFavouritesByMovie(Integer movieID)
     {
         Movie movie = movieDAO.findOne(movieID);
         return favouritesDAO.findByMovie(movie);

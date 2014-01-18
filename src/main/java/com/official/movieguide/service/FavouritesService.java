@@ -8,7 +8,7 @@ public interface FavouritesService
 {
     public Favourites addToFavourites(Integer movieID, Integer userID);
 
-    public List<Favourites> getFavoruitesByUser(Integer userID);
+    public List<Favourites> getFavouritesByUser(Integer userID);
 
-    public List<Favourites> getFavoruitesByMovie(Integer movieID);
+    public List<Favourites> getFavouritesByMovie(Integer movieID);
 }

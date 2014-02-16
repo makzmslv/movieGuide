@@ -22,6 +22,71 @@ public class AdditionalInfo
     @Column(name = "genre")
     private String genre;
 
+    @Column(name = "imdbRating")
+    private String imdbRating;
+
+    @Column(name = "runtime")
+    private String runtime;
+
+    @Column(name = "plot")
+    private String plot;
+
+    @Column(name = "poster")
+    private String poster;
+
+    @Column(name = "movieName")
+    private String movieName;
+
+    public String getMovieName()
+    {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName)
+    {
+        this.movieName = movieName;
+    }
+
+    public String getImdbRating()
+    {
+        return imdbRating;
+    }
+
+    public void setImdbRating(String imdbRating)
+    {
+        this.imdbRating = imdbRating;
+    }
+
+    public String getRuntime()
+    {
+        return runtime;
+    }
+
+    public void setRuntime(String runtime)
+    {
+        this.runtime = runtime;
+    }
+
+    public String getPlot()
+    {
+        return plot;
+    }
+
+    public void setPlot(String plot)
+    {
+        this.plot = plot;
+    }
+
+    public String getPoster()
+    {
+        return poster;
+    }
+
+    public void setPoster(String poster)
+    {
+        this.poster = poster;
+    }
+
     public int getId()
     {
         return id;

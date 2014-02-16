@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.official.movieguide.persistence.dao.MovieDAO;
 import com.official.movieguide.persistence.entity.Movie;
+import com.official.movieguide.service.AdditionalInformationService;
 import com.official.movieguide.service.MovieService;
 
 @Service
@@ -16,6 +17,9 @@ public class MovieServiceImpl implements MovieService
     @Autowired
     private MovieDAO movieDAO;
 
+    @Autowired
+    private AdditionalInformationService additionalInformationService;
+
     public Movie getMovieByName(String movieName)
     {
         return movieDAO.findByName(movieName);
@@ -24,6 +28,7 @@ public class MovieServiceImpl implements MovieService
     @Override
     public List<Movie> getMovies()
     {
+        additionalInformationService.getAdditionalInformationForMovie("Inception");
         return movieDAO.findAll();
     }
 

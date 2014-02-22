@@ -1,0 +1,50 @@
+<h1>Search For Product</h1>
+<div class="input-append">
+	<label for="searchString">ProductName</label> <input
+		style="width: 400px;" class="span2" type="text"
+		ng-model="searchString" required min="1" />
+
+	<div ng-repeat="marker in markers">
+		<label class="control-label">Latitude:</label> <input
+			ng-model="marker.latitude">
+		<label class="control-label">Longitude:</label> <input
+			ng-model="marker.longitude"><br><br>
+		<button class="btn btn-primary" ng-disabled="!searchString"
+		ng-click="search(searchString,marker.latitude,marker.longitude)">Search</button>			
+	</div>
+</div>
+<div class="alert alert-info" style="width: 400px;"
+	ng-show="markers.length == 0">Click on map to show Latitude
+	and Longitude</div>
+<div class="alert alert-info" style="width: 400px;"
+	ng-show="showMessage"><h3>No products found!!! Try Again</h3></div>
+<ol ng-show="searchList.searchTerm != null">
+	<h3>Search Result</h3>
+	<li>Search Term = {{searchList.searchTerm}}</li>
+	<li>No. of Results = {{searchList.noOfResults}}</li>
+	<li>Currency = {{searchList.currency}}</li>
+</ol>
+
+<table class="table table-bordered table-striped" style="width: 450px;"
+	ng-show="searchList.searchTerm != null">
+	<thead>
+		<tr>
+			<th style="text-align: center;">ProductName</th>
+			<th style="text-align: center;">Price</th>
+			<th style="text-align: center;">Unit</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="product in products">
+			<td>{{product.productName}}</td>
+			<td>{{product.price}}</td>
+			<td>{{product.unit}}</td>
+		</tr>
+	</tbody>
+</table>
+<google-map center="center" zoom="zoom" markers="markers"
+	latitude="clickedLatitudeProperty" longitude="clickedLongitudeProperty"
+	mark-click="true" draggable="true" 
+	style="height: 400px; width: 100%; display: block; float:right">
+</google-map>
+

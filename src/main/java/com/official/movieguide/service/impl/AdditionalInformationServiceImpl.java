@@ -3,7 +3,9 @@ package com.official.movieguide.service.impl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +50,14 @@ public class AdditionalInformationServiceImpl implements AdditionalInformationSe
         String webpage = WEBPAGE;
         if (movieNameContainsSpaces(movieName))
         {
-            movieName.replaceAll(" ", "%20");
+            try
+            {
+                movieName = URLEncoder.encode(movieName, "UTF-8");
+            }
+            catch (UnsupportedEncodingException e)
+            {
+                e.printStackTrace();
+            }
         }
         return webpage.concat(movieName);
     }
@@ -87,12 +96,22 @@ public class AdditionalInformationServiceImpl implements AdditionalInformationSe
     private JsonObject parseJSONStringToJSONObject(String additionalInfoJSON)
     {
         JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = jsonParser.parse(additionalInfoJSON).getAsJsonObject();
+        JsonObject jsonObject = null;
+        try
+        {
+            jsonObject = jsonParser.parse(additionalInfoJSON).getAsJsonObject();
+        }
+        catch(Exception exception)
+        {
+            System.out.println("Error Occured during parsing: " + exception);
+        }
         return jsonObject;
     }
 
     private boolean ifAdditionalInfoFound(JsonObject additionalInfoJSONObject)
     {
+        if (additionalInfoJSONObject == null)
+            return false;
         String response = additionalInfoJSONObject.get("Response").getAsString();
         if (response.contentEquals("False"))
             return false;

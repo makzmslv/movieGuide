@@ -33,9 +33,7 @@ public class AdditionalInformationServiceImpl implements AdditionalInformationSe
     public AdditionalInfo getAdditionalInformationForMovie(String movieName)
     {
         String movieURL = obtainURLForMovie(movieName);
-        System.out.println(movieURL);
         String additionalInfoJSONString = obtainJsonFromWeb(movieURL);
-        System.out.println(additionalInfoJSONString);
         JsonObject additionalInfoJSONObject = parseJSONStringToJSONObject(additionalInfoJSONString);
         if (ifAdditionalInfoFound(additionalInfoJSONObject))
         {

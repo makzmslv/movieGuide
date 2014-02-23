@@ -1,12 +1,12 @@
 'use strict';
 
-var pricesApp = angular.module('pricesAngular', [ 'ngRoute', 'google-maps' ]);
+var pricesApp = angular.module('movieGuide', [ 'ngRoute', 'movieGuideControllers', 'movieGuideServices' ]);
 
 // Declare app level module which depends on filters, and services
 pricesApp.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/db', {
+	$routeProvider.when('/movies', {
 		templateUrl : 'resources/html/search.html',
-		controller : 'searchController'
+		controller : 'MovieController'
 	}).when('/add', {
         templateUrl: 'resources/html/add.html',
         controller: 'addController'

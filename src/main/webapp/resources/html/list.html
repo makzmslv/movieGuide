@@ -1,0 +1,28 @@
+<h3 style="text-align: center;">Movies Currently In My DB</h3>
+<table class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">MovieName</th>
+			<th style="text-align: center;">Path</th>
+			<th style="text-align: center;">NameInSystem</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="movie in movies">
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.path}}</td>
+			<td>{{movie.nameInSystem}}</td>
+			<td ng-show="movie.additional_Info != null"><button class="btn btn-primary" ng-click="showDetails($index)">Show Details</button></td>
+			<td ng-show="movie.additional_Info == null"> <button class="btn btn-primary" ng-click="getDetails($index)">Get Details</button></td>
+		</tr>
+	</tbody>
+</table>
+{{test}}
+<google-map center="center" zoom="zoom" markers="markers"
+	latitude="clickedLatitudeProperty" longitude="clickedLongitudeProperty"
+	mark-click="true" draggable="true"
+	style="height: 400px; width: 100%; display: block; float:right">
+</google-map>
+

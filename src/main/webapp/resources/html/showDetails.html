@@ -1,0 +1,30 @@
+<h2 style="text-align: center;">Movie Details</h2>
+<table class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">ProductName</th>
+			<th style="text-align: center;">Price</th>
+			<th style="text-align: center;">Unit</th>
+			<th style="text-align: center;">Currency</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{priceRecord.productName}}</td>
+			<td>{{priceRecord.price}}</td>
+			<td>{{priceRecord.unit}}</td>
+			<td>{{priceRecord.currency}}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="alert alert-info" style="width: 400px;"
+	ng-show="markers.length == 0">Click on map to show Latitude and
+	Longitude</div>
+<div class="alert alert-info" style="width: 400px;"
+	ng-show="showMessage"><h3>Did not add product. Something went wrong !!</h3></div>
+<google-map center="center" zoom="zoom" markers="markers"
+	latitude="clickedLatitudeProperty" longitude="clickedLongitudeProperty"
+	mark-click="true" draggable="true"
+	style="height: 400px; width: 100%; display: block; float:right">
+</google-map>
+

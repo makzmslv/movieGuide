@@ -1,4 +1,10 @@
 <h3 style="text-align: center;">Movies Currently In My DB</h3>
+
+<br/>
+<h5 style="text-align: center;" ng-show="!movies.length">
+	NO MOVIES EXIST IN DATABASE
+</h5>
+
 <table class="table table-bordered table-striped" style="width: 450px;">
 	<thead>
 		<tr>
@@ -19,10 +25,3 @@
 		</tr>
 	</tbody>
 </table>
-{{test}}
-<google-map center="center" zoom="zoom" markers="markers"
-	latitude="clickedLatitudeProperty" longitude="clickedLongitudeProperty"
-	mark-click="true" draggable="true"
-	style="height: 400px; width: 100%; display: block; float:right">
-</google-map>
-

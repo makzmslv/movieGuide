@@ -3,6 +3,8 @@ package com.official.movieguide.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -14,6 +16,7 @@ public class Movie
 {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -91,7 +94,7 @@ public class Movie
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((nameInSystem == null) ? 0 : nameInSystem.hashCode());
         return result;
     }
 
@@ -105,12 +108,12 @@ public class Movie
         if (getClass() != obj.getClass())
             return false;
         Movie other = (Movie) obj;
-        if (name == null)
+        if (nameInSystem == null)
         {
-            if (other.name != null)
+            if (other.nameInSystem != null)
                 return false;
         }
-        else if (!name.equals(other.name))
+        else if (!nameInSystem.equals(other.nameInSystem))
             return false;
         return true;
     }

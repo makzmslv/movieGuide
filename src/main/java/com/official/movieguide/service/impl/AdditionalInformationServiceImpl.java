@@ -15,7 +15,6 @@ import com.google.gson.JsonParser;
 import com.official.movieguide.persistence.dao.AdditonalInfoDAO;
 import com.official.movieguide.persistence.dao.MovieDAO;
 import com.official.movieguide.persistence.entity.AdditionalInfo;
-import com.official.movieguide.persistence.entity.Movie;
 import com.official.movieguide.service.AdditionalInformationService;
 
 @Service
@@ -132,12 +131,9 @@ public class AdditionalInformationServiceImpl implements AdditionalInformationSe
     }
 
     @Override
-    public AdditionalInfo saveAdditionalInformationToDatabase(AdditionalInfo additionalInfo, Movie movie)
+    public AdditionalInfo saveAdditionalInformationToDatabase(AdditionalInfo additionalInfo)
     {
         additionalInfo = additonalInfoDAO.saveAndFlush(additionalInfo);
-        movie.setAdditional_Info(additionalInfo);
-        movie.setName(additionalInfo.getMovieName());
-        movieDAO.saveAndFlush(movie);
         return additionalInfo;
     }
 

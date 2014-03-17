@@ -36,9 +36,9 @@ public class MovieController
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public List<Movie> addMovies(@RequestBody List<Movie> movies)
+    public Movie addMovies(@RequestBody Movie movie)
     {
-        return movieService.addMovies(movies);
+        return movieService.addMovie(movie);
     }
 
 }

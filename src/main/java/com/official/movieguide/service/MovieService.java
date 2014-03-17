@@ -10,7 +10,7 @@ public interface MovieService
 
     public List<Movie> getMovies();
 
-    public List<Movie> addMovies(List<Movie> movies);
+    public Movie addMovie(Movie movies);
 
 }
 

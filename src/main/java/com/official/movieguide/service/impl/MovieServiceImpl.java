@@ -33,9 +33,9 @@ public class MovieServiceImpl implements MovieService
     }
 
     @Override
-    public List<Movie> addMovies(List<Movie> movies)
+    public Movie addMovie(Movie movie)
     {
-        return movieDAO.save(movies);
+        return movieDAO.save(movie);
     }
 
 }

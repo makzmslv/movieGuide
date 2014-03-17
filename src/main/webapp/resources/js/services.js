@@ -12,3 +12,38 @@ movieGuideServices.factory('Movie', ['$resource',
                                      });
                                    }
 								   ]);
+
+movieGuideServices.factory('AdditionalInfo', ['$resource',
+                                     function($resource)
+                                     {
+                                       return $resource('additionalInfo/:movieName', {movieName: "@movieName" }, {
+                                      	 "update": {method: "PUT"}
+                                       });
+                                     }
+  								   ]);
+
+movieGuideServices.factory('Search', ['$resource',
+                                     function($resource)
+                                     {
+                                       return $resource('search', {}, {
+                                      	 "update": {method: "PUT"}
+                                       });
+                                     }
+  								   ]);
+
+
+movieGuideServices.factory('shareData', [
+                                     function()
+                                     {
+                                    	 var dataToShare = null;
+
+                                    	 return {
+                                             getData: function () {
+                                                 return dataToShare;
+                                             },
+                                             setData: function(value) {
+                                            	 dataToShare = value;
+                                             }
+                                    	 };
+                                     }
+  								   ]);

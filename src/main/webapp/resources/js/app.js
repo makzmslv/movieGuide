@@ -1,8 +1,7 @@
 'use strict';
-
+//Declare app level module which depends on filters, and services
 var pricesApp = angular.module('movieGuide', [ 'ngRoute', 'movieGuideControllers', 'movieGuideServices' ]);
 
-// Declare app level module which depends on filters, and services
 pricesApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/list', {
 		templateUrl : 'resources/html/list.html',
@@ -12,8 +11,14 @@ pricesApp.config([ '$routeProvider', function($routeProvider) {
         controller: 'addController'
       }).when('/showDetails', {
           templateUrl: 'resources/html/showDetails.html',
-          controller: 'addController'
-        });
+          controller: 'ShowDetailsController'
+        }).when('/scan', {
+            templateUrl: 'resources/html/scan.html',
+            controller: 'ScanController'
+          }).when('/getDetails', {
+              templateUrl: 'resources/html/getDetails.html',
+              controller: 'GetDetailsController'
+            });
 
 	$routeProvider.otherwise({
 		redirectTo : '/'

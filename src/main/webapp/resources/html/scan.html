@@ -1,0 +1,34 @@
+<h3 style="text-align: center;">Scan Machine</h3>
+{{test}}
+<div class="input-append">
+	<label for="path">Enter Path :</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="path" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!path"
+			ng-click="scan(path)" style="width: 150px;">Scan</button>
+</div>
+<br/>
+<br/>
+<div>
+		<p align="center">
+			<button class="btn btn-primary" ng-show="movies.length"
+				ng-click="add()" style="align: center;">Add To Database</button>
+		</p>
+</div>
+<table ng-show="movies.length" class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">MovieName</th>
+			<th style="text-align: center;">Path</th>
+			<th style="text-align: center;">NameInSystem</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="movie in movies">
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.path}}</td>
+			<td>{{movie.nameInSystem}}</td>
+		</tr>
+	</tbody>
+</table>

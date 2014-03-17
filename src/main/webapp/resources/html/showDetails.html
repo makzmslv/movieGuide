@@ -1,30 +1,44 @@
-<h2 style="text-align: center;">Movie Details</h2>
+<h1 style="text-align: center;">Movie Details</h1>
 <table class="table table-bordered table-striped" style="width: 450px;">
 	<thead>
 		<tr>
-			<th style="text-align: center;">ProductName</th>
-			<th style="text-align: center;">Price</th>
-			<th style="text-align: center;">Unit</th>
-			<th style="text-align: center;">Currency</th>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">MovieName</th>
+			<th style="text-align: center;">Path</th>
+			<th style="text-align: center;">NameInSystem</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>{{priceRecord.productName}}</td>
-			<td>{{priceRecord.price}}</td>
-			<td>{{priceRecord.unit}}</td>
-			<td>{{priceRecord.currency}}</td>
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.path}}</td>
+			<td>{{movie.nameInSystem}}</td>
 		</tr>
 	</tbody>
 </table>
-<div class="alert alert-info" style="width: 400px;"
-	ng-show="markers.length == 0">Click on map to show Latitude and
-	Longitude</div>
-<div class="alert alert-info" style="width: 400px;"
-	ng-show="showMessage"><h3>Did not add product. Something went wrong !!</h3></div>
-<google-map center="center" zoom="zoom" markers="markers"
-	latitude="clickedLatitudeProperty" longitude="clickedLongitudeProperty"
-	mark-click="true" draggable="true"
-	style="height: 400px; width: 100%; display: block; float:right">
-</google-map>
+
+<h4 style="text-align: left;">Additional Information</h4>
+<table class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Director</th>
+			<th style="text-align: center;">Released in Year</th>
+			<th style="text-align: center;">Genre</th>
+			<th style="text-align: center;">RunTime</th>
+			<th style="text-align: center;">Imdb Rating</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{additionalInfo.director}}</td>
+			<td>{{additionalInfo.year}}</td>
+			<td>{{additionalInfo.genre}}</td>
+			<td>{{additionalInfo.runtime}}</td>
+			<td>{{additionalInfo.imdbRating}}</td>
+		</tr>
+	</tbody>
+</table>
+<h5 style="text-align: left;">Plot :</h5> {{ additionalInfo.plot}}
+
 

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.official.movieguide.persistence.entity.AdditionalInfo;
-import com.official.movieguide.persistence.entity.Movie;
 import com.official.movieguide.service.AdditionalInformationService;
 
 @Controller
@@ -28,8 +27,8 @@ public class AdditionalInformationController
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public AdditionalInfo saveAdditionalInfo(@RequestBody AdditionalInfo additionalInfo, @RequestBody Movie movie)
+    public AdditionalInfo saveAdditionalInfo(@RequestBody AdditionalInfo additionalInfo)
     {
-        return additionalInformationService.saveAdditionalInformationToDatabase(additionalInfo, movie);
+        return additionalInformationService.saveAdditionalInformationToDatabase(additionalInfo);
     }
 }

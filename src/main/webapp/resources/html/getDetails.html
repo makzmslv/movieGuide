@@ -1,0 +1,58 @@
+<h1 style="text-align: center;">Movie Details</h1>
+<table class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">MovieName</th>
+			<th style="text-align: center;">Path</th>
+			<th style="text-align: center;">NameInSystem</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.path}}</td>
+			<td>{{movie.nameInSystem}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="input-append">
+	<label for="movieName">Enter name of Movie :</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="movieName" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!movieName"
+			ng-click="getInfo(movieName)" style="width: 150px;">Get Info</button>
+</div>
+
+<h4 style="text-align: left;" ng-show="additionalInfo != null">Additional Information</h4>
+<table class="table table-bordered table-striped" style="width: 450px;" ng-show="additionalInfo != null">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Director</th>
+			<th style="text-align: center;">Released in Year</th>
+			<th style="text-align: center;">Genre</th>
+			<th style="text-align: center;">RunTime</th>
+			<th style="text-align: center;">Imdb Rating</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{additionalInfo.director}}</td>
+			<td>{{additionalInfo.year}}</td>
+			<td>{{additionalInfo.genre}}</td>
+			<td>{{additionalInfo.runtime}}</td>
+			<td>{{additionalInfo.imdbRating}}</td>
+		</tr>
+	</tbody>
+</table>
+<br/>
+<br/>
+<br/>
+<br/>
+<div>
+		<p align="center">
+			<button class="btn btn-primary" ng-show="additionalInfo != null"
+				ng-click="add()" style="align: center;">Add To Database</button>
+		</p>
+</div>

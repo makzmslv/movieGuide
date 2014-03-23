@@ -1,0 +1,58 @@
+<h1 style="text-align: center;">Search For Movies in DB</h1>
+
+<div class="input-append" ng-show="!rating && !year && !genre">
+	<h5 style="text-align: left;">Search By Name:</h5>
+	<label for="movieName">Enter Movie Name</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="movieName" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!movieName"
+			ng-click="byName(movieName)" style="width: 150px;">Search</button>
+</div>
+
+<div class="input-append" ng-show="!movieName && !year && !genre">
+<h5 style="text-align: left;">Search By Rating:</h5>
+	<label for="left">Enter Rating</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="rating" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!rating"
+			ng-click="byRating(rating)" style="width: 150px;">Search</button>
+</div>
+
+<div class="input-append" ng-show="!rating && !movieName && !genre">
+	<h5 style="text-align: left;">Search By Year:</h5>
+	<label for="year">Enter Year</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="year" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!year"
+			ng-click="byYear(year)" style="width: 150px;">Search</button>
+</div>
+
+<div class="input-append" ng-show="!rating && !year && !movieName">
+	<h5 style="text-align: left;">Search By Genre:</h5>
+	<label for="genre">Enter Genre</label> <input style="width: 400px;"
+		class="span2" type="text" ng-model="genre" required min="1" />
+		<button class="btn btn-primary" ng-disabled="!genre"
+			ng-click="byGenre(genre)" style="width: 150px;">Search</button>
+</div>
+<br/>
+<br/>
+<div ng-show="movies != null">
+<h5 style="text-align: left;">Total Number of Movies : {{movies.length}}</h5>
+<table class="table table-bordered table-striped" style="width: 450px;">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Id</th>
+			<th style="text-align: center;">MovieName</th>
+			<th style="text-align: center;">Path</th>
+			<th style="text-align: center;">NameInSystem</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="movie in movies">
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.path}}</td>
+			<td>{{movie.nameInSystem}}</td>
+			<td ng-show="movie.additional_Info != null"><button class="btn btn-primary" ng-click="showDetails($index)">Show Details</button></td>
+			<td ng-show="movie.additional_Info == null"> <button class="btn btn-primary" ng-click="getDetails($index)">Get Details</button></td>
+		</tr>
+	</tbody>
+</table>
+</div>

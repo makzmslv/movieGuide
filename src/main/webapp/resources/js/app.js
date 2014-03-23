@@ -18,7 +18,10 @@ pricesApp.config([ '$routeProvider', function($routeProvider) {
           }).when('/getDetails', {
               templateUrl: 'resources/html/getDetails.html',
               controller: 'GetDetailsController'
-            });
+            }).when('/search', {
+                templateUrl: 'resources/html/search.html',
+                controller: 'SearchController'
+              });
 
 	$routeProvider.otherwise({
 		redirectTo : '/'

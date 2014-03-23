@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.official.movieguide.persistence.entity.Movie;
+import com.official.movieguide.persistence.entity.SearchMovieEntity;
 import com.official.movieguide.service.MovieService;
 
 @Controller
@@ -39,6 +40,13 @@ public class MovieController
     public Movie addMovies(@RequestBody Movie movie)
     {
         return movieService.addMovie(movie);
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Movie> searchForMovie(@RequestBody SearchMovieEntity searchMovieEntity)
+    {
+        return movieService.searchForMovie(searchMovieEntity);
     }
 
 }

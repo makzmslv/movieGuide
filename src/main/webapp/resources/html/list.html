@@ -1,10 +1,9 @@
 <h3 style="text-align: center;">Movies Currently In My DB</h3>
-
 <br/>
 <h5 style="text-align: center;" ng-show="!movies.length">
 	NO MOVIES EXIST IN DATABASE
 </h5>
-
+<h5 style="text-align: left;" ng-show="movies.length">Total Number of Movies : {{movies.length}}</h5>
 <table class="table table-bordered table-striped" style="width: 450px;">
 	<thead>
 		<tr>

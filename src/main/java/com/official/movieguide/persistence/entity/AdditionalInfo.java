@@ -26,7 +26,7 @@ public class AdditionalInfo
     private String genre;
 
     @Column(name = "imdbRating")
-    private String imdbRating;
+    private double imdbRating;
 
     @Column(name = "runtime")
     private String runtime;
@@ -50,12 +50,12 @@ public class AdditionalInfo
         this.movieName = movieName;
     }
 
-    public String getImdbRating()
+    public double getImdbRating()
     {
         return imdbRating;
     }
 
-    public void setImdbRating(String imdbRating)
+    public void setImdbRating(double imdbRating)
     {
         this.imdbRating = imdbRating;
     }

@@ -121,7 +121,7 @@ public class AdditionalInformationServiceImpl implements AdditionalInformationSe
         AdditionalInfo additionalInfo = new AdditionalInfo();
         additionalInfo.setDirector(additionalInfoJSONObject.get("Director").getAsString());
         additionalInfo.setGenre(additionalInfoJSONObject.get("Genre").getAsString());
-        additionalInfo.setImdbRating(additionalInfoJSONObject.get("imdbRating").getAsString());
+        additionalInfo.setImdbRating(additionalInfoJSONObject.get("imdbRating").getAsDouble());
         additionalInfo.setPlot(additionalInfoJSONObject.get("Plot").getAsString());
         additionalInfo.setPoster(additionalInfoJSONObject.get("Poster").getAsString());
         additionalInfo.setRuntime(additionalInfoJSONObject.get("Runtime").getAsString());

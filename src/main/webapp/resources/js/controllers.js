@@ -4,7 +4,7 @@ var movieGuideControllers = angular.module('movieGuideControllers', ['ngResource
 movieGuideControllers.controller('MovieController', ['$scope','$http','$location', 'Movie', 'shareData',function($scope, $http, $location, Movie, shareData)
  {
 	 $scope.movies = Movie.query();
-	 //$scope.movie = Movie.get({},{'movieName' : "Inception"});
+	 $scope.movie = Movie.get({'movieName' : "Inception"});
 	 $scope.showDetails = function(index)
 	 {
 		 shareData.setData($scope.movies[index]);
@@ -19,11 +19,62 @@ movieGuideControllers.controller('MovieController', ['$scope','$http','$location
 
  }]);
 
-movieGuideControllers.controller('ShowDetailsController', ['$scope', 'shareData',function($scope, shareData)
+movieGuideControllers.controller('ShowDetailsController', ['$scope','shareData',function($scope, shareData)
 {
 	$scope.movie = shareData.getData();
 	$scope.additionalInfo = $scope.movie.additional_Info;
  }]);
+
+movieGuideControllers.controller('SearchController', ['$scope','$http','shareData',function($scope, $http, shareData)
+{
+  	var postData = {};
+  	$scope.byName = function(movieName)
+  	{
+  		postData.movieName = movieName;
+  		$http.post('movies/search',postData).success(function(data){
+   	   		$scope.movies = data;
+   	   	});
+  		postData = {};
+  	};
+
+  	$scope.byRating = function(rating)
+  	{
+  		postData.rating = rating;
+  		$http.post('movies/search',postData).success(function(data){
+   	   		$scope.movies = data;
+   	   	});
+  		postData = {};
+  	};
+
+  	$scope.byYear = function(year)
+  	{
+  		postData.year = year;
+  		$http.post('movies/search',postData).success(function(data){
+   	   		$scope.movies = data;
+   	   	});
+  		postData = {};
+  	};
+
+  	$scope.byGenre = function(genre)
+  	{
+  		postData.genre = genre;
+  		$http.post('movies/search',postData).success(function(data){
+   	   		$scope.movies = data;
+   	   	});
+  		postData = {};
+  	};
+
+   	$scope.dopostCall = function(postData)
+   	{
+   		alert("test");
+   		$http.post('movies/search',postData).success(function(data){
+   	   		alert("here");
+   	   	}).Error(function(data){
+   	   		alert("there");
+   	   	});
+   	};
+
+    }]);
 
 movieGuideControllers.controller('GetDetailsController', ['$scope', '$location', 'Movie', 'AdditionalInfo', 'shareData',function($scope, $location, Movie, AdditionalInfo, shareData)
 {

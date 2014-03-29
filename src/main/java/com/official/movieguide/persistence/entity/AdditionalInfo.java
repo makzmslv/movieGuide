@@ -40,6 +40,19 @@ public class AdditionalInfo
     @Column(name = "movieName")
     private String movieName;
 
+    @Column(name = "actors")
+    private String actors;
+
+    public String getActors()
+    {
+        return actors;
+    }
+
+    public void setActors(String actors)
+    {
+        this.actors = actors;
+    }
+
     public String getMovieName()
     {
         return movieName;

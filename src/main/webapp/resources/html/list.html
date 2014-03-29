@@ -9,16 +9,12 @@
 		<tr>
 			<th style="text-align: center;">Id</th>
 			<th style="text-align: center;">MovieName</th>
-			<th style="text-align: center;">Path</th>
-			<th style="text-align: center;">NameInSystem</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="movie in movies">
 			<td>{{movie.id}}</td>
 			<td>{{movie.name}}</td>
-			<td>{{movie.path}}</td>
-			<td>{{movie.nameInSystem}}</td>
 			<td ng-show="movie.additional_Info != null"><button class="btn btn-primary" ng-click="showDetails($index)">Show Details</button></td>
 			<td ng-show="movie.additional_Info == null"> <button class="btn btn-primary" ng-click="getDetails($index)">Get Details</button></td>
 		</tr>

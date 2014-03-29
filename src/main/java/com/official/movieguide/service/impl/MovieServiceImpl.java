@@ -52,7 +52,6 @@ public class MovieServiceImpl implements MovieService
         if (searchMovieEntity.getMovieName() != null)
         {
             String pattern = getPattern(searchMovieEntity.getMovieName());
-            System.out.println(pattern);
             movies = movieDAO.getByNameLike(pattern);
             return movies;
         }

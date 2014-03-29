@@ -20,11 +20,13 @@ public class SearchServiceImpl implements SearchService
     @Autowired
     private MovieDAO movieDAO;
 
-    private static final Set<String> VideoFormats = new HashSet<String>(Arrays.asList("MP4", "MKV", "AVI", "FLV", "MOV", "WMV", "MPEG"));
+    private List<Movie> movies;
+
+    private static final Set<String> VideoFormats = new HashSet<String>(Arrays.asList("MP4", "MKV", "AVI", "FLV", "MOV", "WMV", "MPEG", "DAT"));
 
     public List<Movie> search(String directoryPath)
     {
-        System.out.println(directoryPath);
+        movies = new ArrayList<Movie>();
         File originalDirectory = new File(directoryPath);
         List<Movie> moviesScanned = obtainFileNames(originalDirectory);
         List<Movie> moviesInDb = movieDAO.findAll();
@@ -35,7 +37,6 @@ public class SearchServiceImpl implements SearchService
 
     private List<Movie> obtainFileNames(File directory)
     {
-        List<Movie> movies = new ArrayList<Movie>();
         try
         {
             List<File> filesAndFolders = Arrays.asList(directory.listFiles());
@@ -49,6 +50,7 @@ public class SearchServiceImpl implements SearchService
                 {
                     if (isAMovie(file))
                     {
+                        System.out.println("there");
                         addToList(file, movies);
                     }
                 }
@@ -91,7 +93,9 @@ public class SearchServiceImpl implements SearchService
         String fileName = file.getName();
         String extension = getFileExtension(fileName);
         if (VideoFormats.contains(extension.toUpperCase()))
+        {
             return true;
+        }
 
         return false;
     }

@@ -25,9 +25,23 @@ movieGuideControllers.controller('ShowDetailsController', ['$scope','shareData',
 	$scope.additionalInfo = $scope.movie.additional_Info;
  }]);
 
-movieGuideControllers.controller('SearchController', ['$scope','$http','shareData',function($scope, $http, shareData)
+movieGuideControllers.controller('SearchController', ['$scope','$http','$location','shareData',function($scope, $http, $location, shareData)
 {
   	var postData = {};
+  	$scope.showDetails = function(index)
+	 {
+  		alert("here");
+		 shareData.setData($scope.movies[index]);
+		 $scope.test = $location.absUrl();
+		 $location.url("/showDetails");
+	 };
+
+	 $scope.getDetails = function(index)
+	 {
+		 shareData.setData($scope.movies[index]);
+		 $location.url("/getDetails");
+	 };
+
   	$scope.byName = function(movieName)
   	{
   		postData.movieName = movieName;
@@ -87,6 +101,7 @@ movieGuideControllers.controller('GetDetailsController', ['$scope', '$location',
 	$scope.add = function()
 	{
 		var additionalInf = {};
+		additionalInf.actors = $scope.additionalInfo.actors;
 	   	additionalInf.director = $scope.additionalInfo.director;
 	   	additionalInf.genre = $scope.additionalInfo.genre;
 	   	additionalInf.runtime = $scope.additionalInfo.runtime;
@@ -136,6 +151,7 @@ movieGuideControllers.controller('ScanController', ['$scope','$location','$http'
 			 movie.path = value.path;
 			 movie.nameInSystem = value.nameInSystem;
 			 Movie.save(movie,function(data){
+				 alert("here");
 			 	});
          });
 		 alert("New Movies have been added to the Database");

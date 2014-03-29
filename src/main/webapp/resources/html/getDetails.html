@@ -34,6 +34,7 @@
 			<th style="text-align: center;">Genre</th>
 			<th style="text-align: center;">RunTime</th>
 			<th style="text-align: center;">Imdb Rating</th>
+			<th style="text-align: center;">Actors</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -43,9 +44,16 @@
 			<td>{{additionalInfo.genre}}</td>
 			<td>{{additionalInfo.runtime}}</td>
 			<td>{{additionalInfo.imdbRating}}</td>
+			<td>{{additionalInfo.actors}}</td>
 		</tr>
 	</tbody>
 </table>
+<div>
+		<p align="center" ng-show="additionalInfo != null">
+			<h5 style="text-align: left;">Plot :</h5> {{ additionalInfo.plot}}
+		</p>
+</div>
+
 <div>
 		<p align="center">
 			<button class="btn btn-primary" ng-show="additionalInfo != null"
